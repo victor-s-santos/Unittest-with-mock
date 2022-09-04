@@ -1,0 +1,15 @@
+mongo_db:
+  image: mongo
+  expose:
+    - 27017
+
+clickhouse_db:
+  image: yandex/clickhouse-server
+  expose:
+    - 8123
+
+python:
+  build: .
+  ports:
+    - "27017:27017"
+    - "8123:8123"
