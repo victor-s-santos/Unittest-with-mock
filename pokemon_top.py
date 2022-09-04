@@ -1,4 +1,3 @@
-import types
 import requests
 
 class Pokemon:
@@ -19,5 +18,5 @@ class Pokemon:
         return len(returned_types)
     
 
-#poke = Pokemon(pokemon_name="Pikachu")
-#poke.number_of_types()
+poke = Pokemon(pokemon_name="Pikachu")
+print(poke.number_of_types())
