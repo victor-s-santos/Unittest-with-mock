@@ -1,15 +1,19 @@
-mongo_db:
-  image: mongo
-  expose:
-    - 27017
+version: "3.8"
 
-clickhouse_db:
-  image: yandex/clickhouse-server
-  expose:
-    - 8123
+services:
+  mongo_db:
+    image: mongo
+    ports:
+      - 27017:27017
 
-python:
-  build: .
-  ports:
-    - "27017:27017"
-    - "8123:8123"
+  postgres_db:
+    image: postgres:13
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_data:
